@@ -4,8 +4,8 @@
 class Wget2 < Formula
   desc "wget"
   homepage "https://blog.csdn.net/Wangjiachenga"
-  url "https://github.com/wobushishanpao/software/blob/master/wget2-2.0.0.zip"
-  sha256 "52d901aca17b8030e00d6921e1b2ef212aa7e0be38f46d423be7e682cda914bf"
+  url "https://github.com/wobushishanpao/software/tree/master/wget2-2.0.0"
+  sha256 "57046606dad23ff565ab63381baaf44d03a0738acaf8fc7284ca481b41297c91"
   
 
   # depends_on "cmake" => :build
