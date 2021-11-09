@@ -1,12 +1,12 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class Tunnelblick384aBuild < Formula
-  desc "this is vpn client"
-  homepage "https://blog.csdn.net/Wangjiachenga"
-  url "https://github.com/wobushishanpao/software/blob/master/Tunnelblick_3.8.4a_build_5601.zip"
-  sha256 "5b0e64c78818616f8fa00fdda881f193599ca9837b2ffb41d5c9d7c52e6bf732"
-  
+class Wget < Formula
+  desc "Internet file retriever"
+  homepage "https://www.gnu.org/software/wget/"
+  url "https://github.com/wobushishanpao/homebrew-wb/blob/master/wget-1.21.2.tar.gz"
+  sha256 "d6e629209e7913d4043ff8702bcff23bc1e336f162543d6ef7e764bfddc00cf1"
+  license "GPL-3.0-or-later"
 
   # depends_on "cmake" => :build
 
@@ -23,7 +23,7 @@ class Tunnelblick384aBuild < Formula
     #
     # This test will fail and we won't accept that! For Homebrew/homebrew-core
     # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test Tunnelblick_3.8.4a_build`. Options passed
+    # software. Run the test with `brew test wget`. Options passed
     # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
     #
     # The installed folder is not in the path, so use the entire path to any
