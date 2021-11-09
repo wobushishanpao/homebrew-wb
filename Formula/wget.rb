@@ -8,26 +8,47 @@ class Wget < Formula
   sha256 "d6e629209e7913d4043ff8702bcff23bc1e336f162543d6ef7e764bfddc00cf1"
   license "GPL-3.0-or-later"
 
-  # depends_on "cmake" => :build
+  bottle do
+    sha256 arm64_monterey: "571ef7b59ebab2aa947485aa33bf612d001d51f5bbc89b59d00ac39712b846c8"
+    sha256 arm64_big_sur:  "4f8b66c5f181f01064522a80bfda72eabddd47299a8b88bc7d0022c457e72594"
+    sha256 monterey:       "b6d6f422e3c4db0607caf5fc91dba4fb19b3c52883d7a012c9fc11b872b14bad"
+    sha256 big_sur:        "7a8e6512e0890076b9ebc4f8db6165d70b4bd05e04dfc0491519ba3c91a5c21e"
+    sha256 catalina:       "3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
+    sha256 mojave:         "e0d4b68c9e5abeaa6395241c43307c4bbd26133cd63d136321974535788c37e9"
+    sha256 x86_64_linux:   "1c102dc1129e508f7788824ea6ef4db4656fbab2a6a4b54419689925a5ed6855"
+  end
 
+ #  head do
+ #   url "https://git.savannah.gnu.org/git/wget.git"
+
+  #  depends_on "autoconf" => :build
+  #  depends_on "automake" => :build
+  #  depends_on "xz" => :build
+  #  depends_on "gettext"
+ # end
+
+ # depends_on "pkg-config" => :build
+ # depends_on "libidn2"
+ # depends_on "openssl@1.1"
+
+ # on_linux do
+ #   depends_on "util-linux"
+ # end
+ 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    system "./configure", *std_configure_args, "--disable-silent-rules"
-    # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "./bootstrap", "--skip-po" if build.head?
+    system "./configure", "--prefix=#{prefix}",
+                          "--sysconfdir=#{etc}",
+                          "--with-ssl=openssl",
+                          "--with-libssl-prefix=#{Formula["openssl@1.1"].opt_prefix}",
+                          "--disable-pcre",
+                          "--disable-pcre2",
+                          "--without-libpsl",
+                          "--without-included-regex"
+    system "make", "install"
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test wget`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    system bin/"wget", "-O", "/dev/null", "https://google.com"
   end
 end
