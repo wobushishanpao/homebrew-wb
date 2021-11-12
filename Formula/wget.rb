@@ -8,7 +8,8 @@ class Wget < Formula
   sha256 "bf5149915c2058a77552b7a8882d8c22d6e8afb87da13a8facd08ae96cf3999f"
   license "GPL-3.0-or-later"
   bottle do
-    sha256 catalina:"3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
+   sha256 catalina:"bf5149915c2058a77552b7a8882d8c22d6e8afb87da13a8facd08ae96cf3999f" 
+   #sha256 catalina:"3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
   end
   # depends_on "cmake" => :build
 
