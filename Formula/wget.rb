@@ -5,10 +5,10 @@ class Wget < Formula
   desc "Internet file retriever"
   homepage "https://www.gnu.org/software/wget/"
   url "https://github.com/wobushishanpao/homebrew-wb/blob/master/wget-1.21.2.catalina.bottle.tar.gz"
-  sha256 "bf5149915c2058a77552b7a8882d8c22d6e8afb87da13a8facd08ae96cf3999f"
+  sha256 "3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
   license "GPL-3.0-or-later"
   bottle do
-   sha256 catalina:"bf5149915c2058a77552b7a8882d8c22d6e8afb87da13a8facd08ae96cf3999f" 
+   #sha256 catalina:"bf5149915c2058a77552b7a8882d8c22d6e8afb87da13a8facd08ae96cf3999f" 
    #sha256 catalina:"3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
   end
   # depends_on "cmake" => :build
