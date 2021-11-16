@@ -17,6 +17,13 @@ class Wget < Formula
    # system "./configure", *std_configure_args, "--disable-silent-rules"
     # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
     system "./configure", "--prefix=#{prefix}"
+                          "--sysconfdir=#{etc}"
+                          "--with-ssl=openssl"
+                          "--with-libssl-prefix=#{Formula["openssl@1.1"].opt_prefix}"
+                          "--disable-pcre"
+                          "--disable-pcre2"
+                          "--without-libpsl"
+                          "--without-included-regex"
     system "make", "install"
   end
 
