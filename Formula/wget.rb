@@ -4,8 +4,8 @@
 class Wget < Formula
   desc "Internet file retriever"
   homepage "https://www.gnu.org/software/wget/"
-  url "http://mirror.oldwang.com/software/wget-1.21.2.catalina.bottle.tar.gz"
-  sha256 "3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
+  url "http://mirror.oldwang.com/software/wget-1.21.2.tar.gz"
+  sha256 "e6d4c76be82c676dd7e8c61a29b2ac8510ae108a810b5d1d18fc9a1d2c9a2497"
   license "GPL-3.0-or-later"
 
   # depends_on "cmake" => :build
@@ -14,7 +14,7 @@ class Wget < Formula
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
     # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    # system "./configure", *std_configure_args, "--disable-silent-rules"
+   # system "./configure", *std_configure_args, "--disable-silent-rules"
     # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
