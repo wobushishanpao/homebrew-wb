@@ -8,7 +8,7 @@ class Wget < Formula
   sha256 "3b191bb28b5011e7a105ae76427f6dd21a1e12c33da2273b7e01ef2110f0f375"
   license "GPL-3.0-or-later"
 
-   depends_on "cmake" => :build
+  # depends_on "cmake" => :build
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
@@ -17,13 +17,6 @@ class Wget < Formula
     #system "./configure", *std_configure_args, "--disable-silent-rules"
     # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
     system "./configure", "--prefix=#{prefix}"
-                          "--sysconfdir=#{etc}",
-                          "--with-ssl=openssl",
-                          "--with-libssl-prefix=#{Formula["openssl@1.1"].opt_prefix}",
-                          "--disable-pcre",
-                          "--disable-pcre2",
-                          "--without-libpsl",
-                          "--without-included-regex"
     system "make", "install"
   end
 
