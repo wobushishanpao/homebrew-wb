@@ -9,18 +9,37 @@ class Wget < Formula
   license "GPL-3.0-or-later"
 
   # depends_on "cmake" => :build
+  head do
+    url "https://git.savannah.gnu.org/git/wget.git"
+
+    depends_on "autoconf" => :build
+    depends_on "automake" => :build
+    depends_on "xz" => :build
+    depends_on "gettext"
+  end
+
+  depends_on "pkg-config" => :build
+  depends_on "libidn2"
+  depends_on "openssl@1.1"
+
+  on_linux do
+    depends_on "util-linux"
+  end
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    # system "./configure", *std_configure_args, "--disable-silent-rules"
-    # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
-    system "./configure", "--prefix=#{prefix}"
+    system "./bootstrap", "--skip-po" if build.head?
+    system "./configure", "--prefix=#{prefix}",
+                          "--sysconfdir=#{etc}",
+                          "--with-ssl=openssl",
+                          "--with-libssl-prefix=#{Formula["openssl@1.1"].opt_prefix}",
+                          "--disable-pcre",
+                          "--disable-pcre2",
+                          "--without-libpsl",
+                          "--without-included-regex"
     system "make", "install"
   end
 
-  test do
+   test do
     # `test do` will create, run in and delete a temporary directory.
     #
     # This test will fail and we won't accept that! For Homebrew/homebrew-core
